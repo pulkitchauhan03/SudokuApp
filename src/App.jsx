@@ -84,12 +84,13 @@ function Cell({
             arr.push({ row: row, col: col });
             cellArr.push({ row: cell.row, col: cell.col });
             local[cell.row][cell.col] = [...arr];
-          }
-          else {
-            const currCell = {row: row, col: col}
+          } else {
+            const currCell = { row: row, col: col };
 
             const arr = local[cell.row][cell.col].filter((collision) => {
-              return (collision.row !== currCell.row) || (collision.col !== currCell.col) ;
+              return (
+                collision.row !== currCell.row || collision.col !== currCell.col
+              );
             });
 
             local[cell.row][cell.col] = arr;
@@ -109,8 +110,10 @@ function Cell({
       {cellProblemValue === 0 ? (
         <input
           className={`w-full h-full ${
-            collisions[row][col].length === 0 ? "bg-black" : "bg-red-800"
-          } focus:outline-offset-n3 focus:bg-white focus:text-black text-center caret-transparent cursor-pointer`}
+            collisions[row][col].length === 0
+              ? "bg-black hover:bg-white focus:bg-white hover:text-black focus:text-black outline-black focus:outline"
+              : "bg-red-800 hover:bg-red-600 hover:text-white focus:text-white outline-white focus:outline"
+          } transition-all focus:outline-offset-n3 text-center caret-transparent cursor-pointer border-0`}
           type="number"
           value={solution[row][col] === 0 ? "" : solution[row][col]}
           onChange={() => {}}
@@ -121,7 +124,7 @@ function Cell({
           }}
         ></input>
       ) : (
-        <div className="w-full h-full bg-zinc-700 content-center text-center flex flex-col justify-center">
+        <div className="w-full h-full bg-zinc-700 content-center text-center flex flex-col justify-center select-none">
           {cellProblemValue}
         </div>
       )}
@@ -181,7 +184,7 @@ function App() {
 
   return (
     <div className=" grid w-screen h-screen place-items-center">
-      <div className="grid grid-cols-3 bg-white gap-1 w-144 h-144 p-1">
+      <div className="grid grid-cols-3 bg-zinc-300 gap-1 w-144 h-144 p-1">
         {Array(numRows)
           .fill()
           .map(function (v, i) {
