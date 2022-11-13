@@ -8,7 +8,8 @@ const numRows = 9;
 const options = {
   params: { diff: "2", stype: "list", solu: "false" },
   headers: {
-    "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+    // "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+    "X-RapidAPI-Key": "4db8f58062mshdff98c82698e23dp141045jsnd0d1f5a58e0f",
     "X-RapidAPI-Host": "sudoku-board.p.rapidapi.com",
   },
 };
