@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SubContainer from "./SubContainer";
 
-export default function Sudoku({ problem }) {
+export default function SudokuGrid({ problem }) {
   const [solution, setSolution] = useState(problem.map(a => a.slice()));
   const [collisions, setCollisions] = useState(
     Array(problem.length)
@@ -25,7 +25,8 @@ export default function Sudoku({ problem }) {
 
   return (
     <div className="grid w-screen h-screen place-items-center">
-      <div className="grid grid-cols-3 bg-zinc-300 gap-1 w-144 h-144 p-1">
+      <h1>Sudoku</h1>
+      <div className="grid grid-cols-3 bg-zinc-300 gap-0.75 p-0.75 w-96 h-96 sm:w-144 sm:h-144 sm:gap-1 sm:p-1">
         {Array(numRows)
           .fill()
           .map(function (v, i) {

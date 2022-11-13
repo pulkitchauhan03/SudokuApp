@@ -1,23 +1,40 @@
-import Sudoku from "./Sudoku";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import LoadingIcon from "./components/loadingIcon";
+import SudokuGrid from "./SudokuGrid";
 
-const problem = [
-  [0, 0, 0, 0, 6, 0, 0, 0, 0],
-  [1, 0, 0, 0, 5, 7, 0, 8, 9],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [2, 0, 0, 3, 7, 5, 0, 0, 6],
-  [3, 6, 0, 8, 9, 0, 4, 0, 0],
-  [0, 9, 0, 0, 0, 0, 0, 5, 0],
-  [5, 0, 1, 7, 4, 2, 9, 0, 8],
-  [0, 4, 0, 0, 8, 6, 0, 3, 1],
-  [0, 0, 0, 0, 1, 0, 7, 2, 4],
-];
+const numRows = 9;
+
+const options = {
+  params: { diff: "2", stype: "list", solu: "false" },
+  headers: {
+    "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+    "X-RapidAPI-Host": "sudoku-board.p.rapidapi.com",
+  },
+};
 
 function App() {
-  return (
-    <>
-      <Sudoku problem={problem} />
-    </>
+  const [problem, setProblem] = useState(
+    Array(numRows)
+      .fill()
+      .map(() => Array(numRows).fill(0))
   );
+
+  const [isReady, setReady] = useState(false);
+
+  useEffect(() => {
+    // console.log(options)
+    axios
+      .get("https://sudoku-board.p.rapidapi.com/new-board", options)
+      .then((response) => {
+        const prob = response.data.response;
+        console.log(prob["unsolved-sudoku"]);
+        setProblem(prob["unsolved-sudoku"]);
+        setReady(true);
+      });
+  }, []);
+
+  return <>{isReady ? <SudokuGrid problem={problem} /> : <LoadingIcon />}</>;
 }
 
 export default App;

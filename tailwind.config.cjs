@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       spacing: {
         '144': '36rem',
+        '0.75': '3px',
       },
       outlineOffset: {
         'n3': '-3px',
