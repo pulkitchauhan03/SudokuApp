@@ -29,7 +29,7 @@ export default function SudokuGrid({ problem }) {
       <h1 className="py-4 text-2xl font-semibold align-center tracking-wide">
         SUDOKU{" "}
         <i className="group fa fa-info-circle text-base relative align-text-top leading-8">
-          <div className="group-hover:visible group-hover:opacity-100 invisible absolute sm:w-[512px] w-96 bg-white text-black z-10 opacity-0 transition-all duration-300 px-3 py-2 sm:-left-[256px] -left-48 rounded-md ">
+          <div className="group-hover:visible group-hover:opacity-100 invisible absolute sm:w-[512px] w-96 bg-white text-black z-10 opacity-0 transition-all duration-300 px-3 py-2 sm:-left-[256px] -left-60 rounded-md ">
             <div className="text-center">Instructions</div>
             <div>
               • You can use only numbers from 1 to 9
