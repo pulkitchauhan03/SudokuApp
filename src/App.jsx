@@ -26,13 +26,25 @@ function App() {
   useEffect(() => {
     // console.log(options)
     axios
-      .get("https://sudoku-board.p.rapidapi.com/new-board", options)
+      .get("https://sugoku.onrender.com/board?difficulty=easy")
       .then((response) => {
-        const prob = response.data.response;
-        console.log(prob["unsolved-sudoku"]);
-        setProblem(prob["unsolved-sudoku"]);
+        const prob = response.data.board;
+        // console.log(prob);
+        setProblem(prob);
         setReady(true);
       });
+    // Problem Format
+    // setProblem([
+    //   [2, 0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 6, 2, 0, 0],
+    //   [0, 0, 1, 0, 0, 0, 0, 7, 0],
+    //   [0, 0, 6, 0, 0, 8, 0, 0, 0],
+    //   [3, 0, 0, 0, 9, 0, 0, 0, 7],
+    //   [0, 0, 0, 6, 0, 0, 4, 0, 0],
+    //   [0, 4, 0, 0, 0, 0, 8, 0, 0],
+    //   [0, 0, 5, 2, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 3],
+    // ]);
   }, []);
 
   return <>{isReady ? <SudokuGrid problem={problem} /> : <LoadingIcon />}</>;
