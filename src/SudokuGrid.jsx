@@ -54,7 +54,7 @@ export default function SudokuGrid({ problem }) {
       </h1>
 
       <div className="w-full relative h-[100dvh] justify-center py-32">
-        <div className="grid grid-cols-3 mx-auto bg-zinc-300 gap-0.75 p-0.75 w-96 h-96 sm:w-144 sm:h-144 sm:gap-1 sm:p-1">
+        <div className="grid grid-cols-3 mx-auto bg-zinc-300 gap-0.75 p-0.75 w-96 h-96 text-2xl sm:text-lg sm:w-144 sm:h-144 sm:gap-1 sm:p-1">
           {Array(numRows)
             .fill()
             .map(function (v, i) {
