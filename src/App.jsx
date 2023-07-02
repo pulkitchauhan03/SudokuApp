@@ -5,15 +5,6 @@ import SudokuGrid from "./SudokuGrid";
 
 const numRows = 9;
 
-const options = {
-  params: { diff: "2", stype: "list", solu: "false" },
-  headers: {
-    // "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
-    "X-RapidAPI-Key": "4db8f58062mshdff98c82698e23dp141045jsnd0d1f5a58e0f",
-    "X-RapidAPI-Host": "sudoku-board.p.rapidapi.com",
-  },
-};
-
 function App() {
   const [problem, setProblem] = useState(
     Array(numRows)
@@ -24,12 +15,10 @@ function App() {
   const [isReady, setReady] = useState(false);
 
   useEffect(() => {
-    // console.log(options)
     axios
       .get("https://sugoku.onrender.com/board?difficulty=easy")
       .then((response) => {
         const prob = response.data.board;
-        // console.log(prob);
         setProblem(prob);
         setReady(true);
       });
